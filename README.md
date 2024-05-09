@@ -2,8 +2,5 @@
 
 ## 如何查看
 
-在此資料夾跑 local server  
-再用瀏覽器去看
-
-`python -m http.server`  
-`localhost:8000`
+在終端上跑：`python -m http.server`  
+然後到瀏覽器輸入`localhost:8000`
