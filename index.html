@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+</head>
+
+<body>
+  <a-scene>
+    <!-- assets -->
+    <a-assets>
+      <!-- sky -->
+      <img id="sky" src="skybox.jpg">
+
+      <!-- snow normal map -->
+      <img id="snow_color" src="snow_texture/color.jpg">
+      <img id="snow_ao" src="snow_texture/ao.jpg">
+      <img id="snow_roughness" src="snow_texture/roughness.jpg">
+      <img id="snow_normal" src="snow_texture/normal_opengl.png">
+      <img id="snow_displacement" src="snow_texture/height.png">
+
+      <!-- wood normal map -->
+      <img id="wood_color" src="wood_texture/color.jpg">
+      <img id="wood_ao" src="wood_texture/ao.jpg">
+      <img id="wood_roughness" src="wood_texture/roughness.jpg">
+      <img id="wood_normal" src="wood_texture/normal_opengl.png">
+      <img id="wood_displacement" src="wood_texture/height.png">
+    </a-assets>
+
+    <!-- skybox -->
+    <a-sky src="#sky" phi-start="-140"></a-sky>
+
+    <!-- light -->
+    <a-light type="ambient" color="#CCA" intensity="0.7"></a-light>
+    <a-light type="directional" color="#FFF" intensity="0.6" position="2 1 0"></a-light>
+
+    <!-- snowman -->
+    <a-sphere src="#snow_color"
+              ambient-occlusion-map="#snow_ao"
+              roughness="#snow_roughness"
+              normal-map="#snow_normal"
+              displacement-map="#snow_displacement"
+              radius="0.5"
+              position="-4 0.2 -8"
+              rotation="0 60">
+      <a-sphere src="#snow_color"
+                ambient-occlusion-map="#snow_ao"
+                roughness="#snow_roughness"
+                normal-map="#snow_normal"
+                displacement-map="#snow_displacement"
+                radius="0.1"
+                position="0 1.8 0">
+      </a-sphere>
+      <a-sphere color="black" radius="0.08" position="-0.35 2.1 0.98"></a-sphere>
+      <a-sphere color="black" radius="0.08" position="0.35 2.1 1.03"></a-sphere>
+    </a-sphere>
+
+    <!-- wood house -->
+    <!-- -16 0 55 -->
+    <!-- -2 20 -90 -->
+    <a-box src="#wood_color"
+           ambient-occlusion-map="#wood_ao"
+           roughness="#wood_roughness"
+           normal-map="#wood_normal"
+           repeat="1 2"
+           height="12" width="4" depth="8"
+           position="-16 0 55"
+           rotation="-2 20 -90">
+      <a-cylinder src="#wood_color"
+                  ambient-occlusion-map="#wood_ao"
+                  roughness="#wood_roughness"
+                  normal-map="#wood_normal"
+                  repeat="1 2"
+                  segments-radial=3
+                  position="-4.35 0 0"
+                  rotation="0 -90 0"
+                  radius="4.7"
+                  height="12">
+        <a-box ambient-occlusion-map="#snow_ao"
+               roughness="#snow_roughness"
+               normal-map="#snow_normal"
+               height="13" width="0.3" depth="9"
+               position="-2.25 0 1"
+               rotation="0 30 0">
+        </a-box>
+        <a-box ambient-occlusion-map="#snow_ao"
+               roughness="#snow_roughness"
+               normal-map="#snow_normal"
+               height="13" width="0.3" depth="9.25"
+               position="2.25 0 1"
+               rotation="0 -30 0">
+      </a-cylinder>
+    </a-box>
+  </a-scene>
+</body>
+
+</html>
